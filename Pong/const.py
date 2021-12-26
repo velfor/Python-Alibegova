@@ -1,8 +1,7 @@
 #константы
-SC_WIDTH = 600
-SC_HEIGHT = 400
 FPS = 60
-BLACK = (0,0,0)
 WHITE = (255,255,255)
+BLACK = (0,0,0)
 YELLOW = (255,255,0)
-rect_speed = 2
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
