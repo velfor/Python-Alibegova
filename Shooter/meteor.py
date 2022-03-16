@@ -3,9 +3,16 @@ from const import *
 import random
 
 class Meteor(pygame.sprite.Sprite):
+    file_name_list = ["meteorBrown_big1.png", "meteorBrown_big2.png",
+                        "meteorBrown_med1.png", "meteorBrown_med2.png",
+                        "meteorBrown_small1.png", "meteorBrown_small2.png",
+                        "meteorBrown_tiny1.png", "meteorBrown_tiny2.png"]   
+
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(IMG_DIR + "meteorBrown_big1.png").convert_alpha()
+        number = random.randint(0,7)
+        file_name = IMG_DIR + Meteor.file_name_list[number]
+        self.image = pygame.image.load(file_name).convert_alpha()
         self.rect = self.image.get_rect()
         self.random_spawn()
 

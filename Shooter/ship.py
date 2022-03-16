@@ -5,11 +5,12 @@ class Ship(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(IMG_DIR + PLAYER_IMG_FILE_NAME).convert()
-        #self.image = pygame.transform.scale(img, (SC_WIDTH, SC_HEIGHT))
         self.rect = self.image.get_rect()
         self.rect.centerx = SC_WIDTH // 2
         self.rect.bottom = SC_HEIGHT - 20
         self.speedx = 5
+        self.hp = PLAYER_HP
+        self.score = 0
 
     def update(self):
         self.speedx = 0
