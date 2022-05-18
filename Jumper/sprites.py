@@ -14,15 +14,11 @@ class Player(pg.sprite.Sprite):
         self.speed = vec(0, 0)
         self.acc = vec(0, 0)
         self.pos = vec(SC_WIDTH/2, SC_HEIGHT/2)
-        self.is_jump = True
+        
 
     def update(self):
         
-        if self.is_jump:
-            self.acc = vec(0, GRAVITY)
-        elif not self.is_jump:
-            self.acc = vec(0, 0)
-            
+        self.acc = vec(0, GRAVITY)
         keys = pg.key.get_pressed()
         if keys[pg.K_LEFT]:
             self.acc.x = -PLAYER_ACC
@@ -36,11 +32,17 @@ class Player(pg.sprite.Sprite):
         self.pos += self.speed + 0.5 * self.acc
         self.rect.midbottom = self.pos
 
+        if self.pos.x < 0:
+            self.pos.x = SC_WIDTH
+            
+        elif self.pos.x > SC_WIDTH:
+            self.pos.x = 0
+
     def jump(self):
         self.rect.y += 1
         hits = pg.sprite.spritecollide(self, self.game.platform_sprites, False)
         self.rect.y -= 1
-        if hits and not self.is_jump:
+        if hits:
             self.is_jump = True
             self.speed.y = PLAYER_JUMP_SPEED
 
